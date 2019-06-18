@@ -12,8 +12,38 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI Calc'),
       ),
-      body: Center(
-        child: Text('Body text'),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(color: Color(0xFF1D1F33)),
+                ),
+                Expanded(
+                  child: ReusableCard(color: Color(0xFF1D1F33)),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ReusableCard(color: Color(0xFF1D1F33)),
+          ),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(color: Color(0xFF1D1F33)),
+                ),
+                Expanded(
+                  child: ReusableCard(color: Color(0xFF1D1F33)),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
 /*
       floatingActionButton: Theme(
@@ -24,6 +54,23 @@ class _InputPageState extends State<InputPage> {
         ),
       ),
 */
+    );
+  }
+}
+
+class ReusableCard extends StatelessWidget {
+  final Color color;
+
+  ReusableCard({@required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: color,
+      ),
     );
   }
 }
