@@ -18,6 +18,12 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender _selectedGender;
 
+  void _selectGender(Gender gender) {
+    setState(() {
+      _selectedGender = gender;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,37 +38,25 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _selectedGender = Gender.male;
-                      });
-                    },
-                    child: ReusableCard(
-                      color: _selectedGender == Gender.male
-                          ? activeCardColor
-                          : inactiveCardColor,
-                      cardChild: CardIconContent(
-                          iconData: FontAwesomeIcons.mars, label: 'MALE'),
-                    ),
+                  child: ReusableCard(
+                    color: _selectedGender == Gender.male
+                        ? activeCardColor
+                        : inactiveCardColor,
+                    cardChild: CardIconContent(
+                        iconData: FontAwesomeIcons.mars, label: 'MALE'),
+                    onPress: () => _selectGender(Gender.male),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _selectedGender = Gender.female;
-                      });
-                    },
-                    child: ReusableCard(
-                      color: _selectedGender == Gender.female
-                          ? activeCardColor
-                          : inactiveCardColor,
-                      cardChild: CardIconContent(
-                        iconData: FontAwesomeIcons.venus,
-                        label: 'FEMALE',
-                      ),
+                  child: ReusableCard(
+                    color: _selectedGender == Gender.female
+                        ? activeCardColor
+                        : inactiveCardColor,
+                    cardChild: CardIconContent(
+                      iconData: FontAwesomeIcons.venus,
+                      label: 'FEMALE',
                     ),
+                    onPress: () => _selectGender(Gender.female),
                   ),
                 ),
               ],
