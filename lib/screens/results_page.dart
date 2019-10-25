@@ -5,6 +5,16 @@ import '../constants.dart';
 import 'package:bmi_calc/components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
+  const ResultsPage({
+    @required this.bmiResult,
+    @required this.resultText,
+    @required this.interpretation,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,15 +43,15 @@ class ResultsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'NORMAL',
+                      resultText.toUpperCase(),
                       style: kResultTextStyle,
                     ),
                     Text(
-                      '26.7',
+                      bmiResult,
                       style: kBMITextStyle,
                     ),
                     Text(
-                      'You have a higher than normal body weight. Try to exercise more.',
+                      interpretation,
                       textAlign: TextAlign.center,
                       style: kBodyTextStyle,
                     ),
